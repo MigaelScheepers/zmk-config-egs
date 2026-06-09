@@ -1,12 +1,6 @@
-name: Build ZMK firmware
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
-
-jobs:
-  build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+# Target architecture build matrix for EGS_W1
+include:
+  - board: nice_nano_v2
+    shield: egs_left
+  - board: nice_nano_v2
+    shield: egs_right
