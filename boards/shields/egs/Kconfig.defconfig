@@ -12,9 +12,11 @@ config ZMK_SPLIT
     default y
 
 config ZMK_PHYSICAL_LAYOUT
+    bool                       # <--- Added type declaration
     default y
 
 config KEYBOARD_NAME
+    string                     # <--- Added type declaration
     default "EGS_W1"
 
 endif
