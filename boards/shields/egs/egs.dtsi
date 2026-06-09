@@ -4,7 +4,7 @@
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
-#include "egs-layout.dtsi"
+#include "egs-layouts.dtsi"
 
 / {
     chosen {
