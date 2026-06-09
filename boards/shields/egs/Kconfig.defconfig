@@ -4,15 +4,17 @@
 if SHIELD_EGS_LEFT || SHIELD_EGS_RIGHT
 
 config SHIELD
+    string
     default "egs"
 
 config ZMK_SPLIT
+    bool
     default y
 
 config ZMK_PHYSICAL_LAYOUT
     default y
 
 config KEYBOARD_NAME
-    default "EGS"
+    default "EGS_W1"
 
 endif
