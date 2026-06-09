@@ -4,3 +4,5 @@ include:
     shield: egs_left
   - board: nice_nano_v2   
     shield: egs_right
+  - board: nice_nano_v2
+    shield: tester_pro_micro
