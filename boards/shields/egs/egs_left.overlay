@@ -1,14 +1,51 @@
-// This file was generated from a template. Edit it to match your keyboard.
-// See https://zmk.dev/docs/development/hardware-integration/new-shield for more
-// instructions.
+/*
+ * Copyright (c) 2026 The EGS_W1 Project Contributor
+ * SPDX-License-Identifier: MIT
+ */
 
 #include "egs.dtsi"
 
-&kscan {
-    // Replace these comments with the GPIO pins in the matrix for the left side.
-    // See https://zmk.dev/docs/development/hardware-integration/new-shield#shield-overlays
-    col-gpios
-        = <&pro_micro 0 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 0 GPIO_ACTIVE_HIGH>
-        ;
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+        diode-direction = "col2row";
+
+        // Left Side Row GPIO Pins
+        row-gpios
+            = <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 0 -> D2 (P0.17)
+            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 1 -> D3 (P0.20)
+            , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 2 -> D4 (P0.22)
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 3 -> D5 (P0.24)
+            , <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 4 -> D6 (P1.00)
+            ;
+
+        // Left Side Column GPIO Pins
+        col-gpios
+            = <&gpio0 11 GPIO_ACTIVE_HIGH>  // Col 0 -> D7  (P0.11)
+            , <&gpio1 4 GPIO_ACTIVE_HIGH>  // Col 1 -> D8  (P1.04)
+            , <&gpio1 6 GPIO_ACTIVE_HIGH>  // Col 2 -> D9  (P1.06)
+            , <&gpio0 9 GPIO_ACTIVE_HIGH>  // Col 3 -> D10 (P0.09)
+            , <&gpio0 10 GPIO_ACTIVE_HIGH>  // Col 4 -> D16 (P0.10)
+            , <&gpio1 11 GPIO_ACTIVE_HIGH>  // Col 5 -> D14 (P1.11)
+            ;
+    };
+
+    // Left Side Volume Encoder Hardware Profile
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // Pin 18 (P0.29)
+        b-gpios = <&gpio0 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // Pin 19 (P0.02)
+        steps = <24>;
+    };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+        triggers-per-rotation = <20>;
+    };
 };
