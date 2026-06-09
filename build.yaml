@@ -1,6 +1,6 @@
 # Target architecture build matrix for EGS_W1
 include:
-  - board: nrfmicro_11   
+  - board: nice_nano_v2   
     shield: egs_left
-  - board: nrfmicro_11   
+  - board: nice_nano_v2   
     shield: egs_right
