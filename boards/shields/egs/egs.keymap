@@ -1,94 +1,94 @@
 /*
  * Copyright (c) 2026 The EGS_W1 Project Contributor
  * SPDX-License-Identifier: MIT
+ *
+ * Physical layout reminder (left | right):
+ *
+ * Row0:  Esc  1    2    3    4    5    |  6    7    8    9    0    -
+ * Row1:  Tab  Q    W    E    R    T    |  Y    U    I    O    P    Bsp
+ * Row2:  LSft A    S    D    F    G    |  H    J    K    L    ;    '
+ * Row3:  LCtl Z    X    C    V    B    |  N    M    ,    .    /    RCtl
+ * Row4:  LAlt Win  Mo1  Spc  Del  Mut  |  Pse  Ent  Spc  Mo2  Mo3  RAlt
+ *
+ * Mut = encoder push (left,  Row4 Col5)
+ * Pse = encoder push (right, Row4 Col0 on right MCU = logical Col6)
+ *
+ * Right-side columns are physically mirrored (Col0 = outermost/rightmost).
+ * The matrix_transform maps logical cols 6-11 to right-MCU cols 5-0,
+ * so the keymap reads naturally left-to-right.
  */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-/* Define clean layer alias shortcuts */
 #define DEFAULT 0
 #define MODE1   1
 #define MODE2   2
 #define MODE3   3
 
 / {
-    /* Map your physical rotary turns to actions */
-    sensor_bindings: sensor_bindings {
-        compatible = "zmk,keymap-sensor-bindings";
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
-        /* ==========================================================================
-         * LAYER 0: DEFAULT BASE LAYER
-         * ========================================================================== */
+        /* ================================================================
+         * LAYER 0 — DEFAULT BASE
+         * ================================================================ */
         default_layer {
             display-name = "Base";
             bindings = <
-    /* Row 0 */
-    &kp ESC    &kp N1   &kp N2   &kp N3   &kp N4   &kp N5       &kp N6   &kp N7   &kp N8    &kp N9   &kp N0   &kp MINUS
-    /* Row 1 */
-    &kp TAB    &kp Q    &kp W    &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I     &kp O    &kp P    &kp BSPC
-    /* Row 2 */
-    &kp LSHFT  &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K     &kp L    &kp SEMI &kp SQT
-    /* Row 3 */
-    &kp LCTRL  &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA &kp DOT  &kp FSLH &kp RCTRL
-    /* Row 4 */
-    &kp LALT   &kp LGUI &mo MODE1 &kp SPACE &kp DEL &kp C_MUTE   &kp C_PP &kp ENTER &kp SPACE &mo MODE2 &mo MODE3 &kp RALT
+/*  Row0 */ &kp ESC    &kp N1    &kp N2    &kp N3     &kp N4    &kp N5        &kp N6      &kp N7    &kp N8     &kp N9    &kp N0    &kp MINUS
+/*  Row1 */ &kp TAB    &kp Q     &kp W     &kp E      &kp R     &kp T         &kp Y       &kp U     &kp I      &kp O     &kp P     &kp BSPC
+/*  Row2 */ &kp LSHFT  &kp A     &kp S     &kp D      &kp F     &kp G         &kp H       &kp J     &kp K      &kp L     &kp SEMI  &kp SQT
+/*  Row3 */ &kp LCTRL  &kp Z     &kp X     &kp C      &kp V     &kp B         &kp N       &kp M     &kp COMMA  &kp DOT   &kp FSLH  &kp RCTRL
+/*  Row4 */ &kp LALT   &kp LGUI  &mo MODE1 &kp SPACE  &kp DEL   &kp C_MUTE    &kp C_PP    &kp RET   &kp SPACE  &mo MODE2 &mo MODE3 &kp RALT
             >;
-
-            /* Left Side Encoder = Volume Control | Right Side Encoder = Media Track Skip */
+            /* Left encoder = volume | Right encoder = media track */
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
-        /* ==========================================================================
-         * LAYER 1: MODE 1 (Hold to activate)
-         * ========================================================================== */
+        /* ================================================================
+         * LAYER 1 — MODE1  (fill in bindings as needed)
+         * ================================================================ */
         mode1_layer {
             display-name = "Mode 1";
             bindings = <
-    &trans     &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans    &trans   &trans   &trans
-    &trans     &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans    &trans   &trans   &trans
-    &trans     &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans    &trans   &trans   &trans
-    &trans     &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans    &trans   &trans   &trans
-    &trans     &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans    &trans   &trans   &trans
+/*  Row0 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row1 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row2 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row3 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row4 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
-        /* ==========================================================================
-         * LAYER 2: MODE 2 (Hold to activate)
-         * ========================================================================== */
+        /* ================================================================
+         * LAYER 2 — MODE2  (fill in bindings as needed)
+         * ================================================================ */
         mode2_layer {
             display-name = "Mode 2";
             bindings = <
-    &trans     &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans    &trans   &trans   &trans
-    &trans     &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans    &trans   &trans   &trans
-    &trans     &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans    &trans   &trans   &trans
-    &trans     &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans    &trans   &trans   &trans
-    &trans     &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans    &trans   &trans   &trans
+/*  Row0 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row1 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row2 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row3 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row4 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
-        /* ==========================================================================
-         * LAYER 3: MODE 3 (Hold to activate / Wireless Profiles Setup)
-         * ========================================================================== */
+        /* ================================================================
+         * LAYER 3 — MODE3  (BT profiles + fill in as needed)
+         * ================================================================ */
         mode3_layer {
             display-name = "Mode 3";
             bindings = <
-    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &trans &trans   &trans &trans &trans &trans &trans &trans
-    &trans     &trans       &trans       &trans       &trans &trans   &trans &trans &trans &trans &trans &trans
-    &trans     &trans       &trans       &trans       &trans &trans   &trans &trans &trans &trans &trans &trans
-    &trans     &trans       &trans       &trans       &trans &trans   &trans &trans &trans &trans &trans &trans
-    &trans     &trans       &trans       &trans       &trans &trans   &trans &trans &trans &trans &trans &trans
+/*  Row0 */ &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row1 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row2 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row3 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/*  Row4 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
     };

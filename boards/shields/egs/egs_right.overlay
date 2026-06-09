@@ -8,39 +8,48 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
+        zmk,battery = &vbatt;
     };
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
+
+        /*
+         * Right side board is mounted front-upwards, same orientation as left.
+         * Solder pad routing means physical Col0 on right = pin7 (P0.11) just
+         * like the left, but Col0 here corresponds to the RIGHTMOST column
+         * physically. The matrix_transform in egs-layouts.dtsi handles the
+         * logical remapping so keymaps read left-to-right naturally.
+         * Hardware pin assignments are IDENTICAL to left side.
+         */
         diode-direction = "col2row";
 
-        // Right Side Row GPIO Pins
         row-gpios
-            = <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 0 -> D2 (P0.17)
-            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 1 -> D3 (P0.20)
-            , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 2 -> D4 (P0.22)
-            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 3 -> D5 (P0.24)
-            , <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // Row 4 -> D6 (P1.00)
+            = <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Row0  Pin2  P0.17 */
+            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Row1  Pin3  P0.20 */
+            , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Row2  Pin4  P0.22 */
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Row3  Pin5  P0.24 */
+            , <&gpio1  0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Row4  Pin6  P1.00 */
             ;
 
-        // Right Side Column GPIO Pins
         col-gpios
-            = <&gpio1 11 (GPIO_ACTIVE_HIGH)>  // Col 0 -> D7  (P1.11)
-            , <&gpio0 10 (GPIO_ACTIVE_HIGH)>  // Col 1 -> D8  (P0.10)
-            , <&gpio0 9 (GPIO_ACTIVE_HIGH)>  // Col 2 -> D9  (P0.09)
-            , <&gpio1 6 (GPIO_ACTIVE_HIGH)>  // Col 3 -> D10 (P1.06)
-            , <&gpio1 4 (GPIO_ACTIVE_HIGH)>  // Col 4 -> D16 (P1.04)
-            , <&gpio0 11 (GPIO_ACTIVE_HIGH)>  // Col 5 -> D14 (P0.11)
+            = <&gpio0 11 GPIO_ACTIVE_HIGH>  /* Col0  Pin7   P0.11  (rightmost column physically) */
+            , <&gpio1  4 GPIO_ACTIVE_HIGH>  /* Col1  Pin8   P1.04 */
+            , <&gpio1  6 GPIO_ACTIVE_HIGH>  /* Col2  Pin9   P1.06 */
+            , <&gpio0  9 GPIO_ACTIVE_HIGH>  /* Col3  Pin10  P0.09 */
+            , <&gpio0 10 GPIO_ACTIVE_HIGH>  /* Col4  Pin16  P0.10 */
+            , <&gpio1 11 GPIO_ACTIVE_HIGH>  /* Col5  Pin14  P1.11  (inner column physically) */
             ;
     };
 
-    // Right Side Media Navigation Encoder Hardware Profile
+    /* Right encoder: media track skip */
     right_encoder: encoder_right {
         compatible = "alps,ec11";
-        a-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // Pin 18 (P0.29)
-        b-gpios = <&gpio0 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // Pin 19 (P0.02)
+        a-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  /* Pin18  P0.29 */
+        b-gpios = <&gpio0  2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  /* Pin19  P0.02 */
         steps = <24>;
+        status = "okay";
     };
 
     sensors: sensors {
@@ -48,4 +57,15 @@
         sensors = <&right_encoder>;
         triggers-per-rotation = <20>;
     };
+
+    vbatt: vbatt {
+        compatible = "zmk,battery-voltage-divider";
+        io-channels = <&adc 2>;   /* AIN2 = P0.04 */
+        output-ohms = <806000>;
+        full-ohms = <2806000>;
+    };
+};
+
+&adc {
+    status = "okay";
 };

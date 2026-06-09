@@ -3,7 +3,7 @@
 
 file_format: "1"
 id: egs
-name: EGS
+name: EGS_W1
 type: shield
 features:
   - keys

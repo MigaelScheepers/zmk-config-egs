@@ -1,6 +1,20 @@
 /*
  * Copyright (c) 2026 The EGS_W1 Project Contributor
  * SPDX-License-Identifier: MIT
+ *
+ * EGS_W1  —  5 rows × 12 logical columns (6 left + 6 right)
+ *
+ * Left MCU:  logical cols  0..5  map to physical cols 0..5  (Col0=outermost)
+ * Right MCU: logical cols  6..11 map to physical cols 0..5  (Col0=outermost/rightmost)
+ *            so RC(r,6) = right Col0 (rightmost key), RC(r,11) = right Col5 (inner key)
+ *
+ * Physical layout (Row0 example):
+ *   Left:  Esc(0,0) 1(0,1) 2(0,2) 3(0,3) 4(0,4) 5(0,5)  |  6(0,6) 7(0,7) 8(0,8) 9(0,9) 0(0,10) -(0,11)
+ *
+ * Right side columns are mirrored in hardware, so the transform below
+ * reverses them: RC(r,6)..RC(r,11) reads right-MCU cols 5..0 respectively.
+ *   RC(0,6)  = right physical Col5 (innermost)  = key "6"
+ *   RC(0,11) = right physical Col0 (outermost)  = key "-"
  */
 
 / {
@@ -19,21 +33,17 @@
         rows = <5>;
         columns = <12>;
 
-        /* * Physical Key Layout Coordinate Map
-         * Left Side:  Cols 0 -> 5  (Outer edge to Inner edge)
-         * Right Side: Cols 5 -> 0  (Inner edge to Outer edge)
-         */
         map = <
-        /* Row 0 */
-        RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)    RC(0,11) RC(0,10) RC(0,9) RC(0,8) RC(0,7) RC(0,6)
-        /* Row 1 */
-        RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5)    RC(1,11) RC(1,10) RC(1,9) RC(1,8) RC(1,7) RC(1,6)
-        /* Row 2 */
-        RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)    RC(2,11) RC(2,10) RC(2,9) RC(2,8) RC(2,7) RC(2,6)
-        /* Row 3 */
-        RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)    RC(3,11) RC(3,10) RC(3,9) RC(3,8) RC(3,7) RC(3,6)
-        /* Row 4 */
-        RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)    RC(4,11) RC(4,10) RC(4,9) RC(4,8) RC(4,7) RC(4,6)
+        /* Row 0: Esc  1    2    3    4    5    |  6    7    8    9    0    -   */
+           RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)    RC(0,6) RC(0,7) RC(0,8) RC(0,9) RC(0,10) RC(0,11)
+        /* Row 1: Tab  Q    W    E    R    T    |  Y    U    I    O    P    Bsp */
+           RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5)    RC(1,6) RC(1,7) RC(1,8) RC(1,9) RC(1,10) RC(1,11)
+        /* Row 2: Sft  A    S    D    F    G    |  H    J    K    L    ;    '   */
+           RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)    RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10) RC(2,11)
+        /* Row 3: Ctl  Z    X    C    V    B    |  N    M    ,    .    /    Rct */
+           RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)    RC(3,6) RC(3,7) RC(3,8) RC(3,9) RC(3,10) RC(3,11)
+        /* Row 4: Alt  Win  Mo1  Spc  Del  Mut  |  Pse  Ent  Spc  Mo2  Mo3  Alt */
+           RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)    RC(4,6) RC(4,7) RC(4,8) RC(4,9) RC(4,10) RC(4,11)
         >;
     };
 };
