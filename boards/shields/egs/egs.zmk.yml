@@ -5,8 +5,6 @@ file_format: "1"
 id: egs
 name: EGS
 type: shield
-interconnects:
-  - pro_micro
 features:
   - keys
   - encoder
