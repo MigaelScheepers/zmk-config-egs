@@ -26,12 +26,12 @@
 
         // Left Side Column GPIO Pins
         col-gpios
-            = <&gpio0 11 GPIO_ACTIVE_HIGH>  // Col 0 -> D7  (P0.11)
-            , <&gpio1 4 GPIO_ACTIVE_HIGH>  // Col 1 -> D8  (P1.04)
-            , <&gpio1 6 GPIO_ACTIVE_HIGH>  // Col 2 -> D9  (P1.06)
-            , <&gpio0 9 GPIO_ACTIVE_HIGH>  // Col 3 -> D10 (P0.09)
-            , <&gpio0 10 GPIO_ACTIVE_HIGH>  // Col 4 -> D16 (P0.10)
-            , <&gpio1 11 GPIO_ACTIVE_HIGH>  // Col 5 -> D14 (P1.11)
+            = <&gpio0 11 (GPIO_ACTIVE_HIGH)>  // Col 0 -> D7  (P0.11)
+            , <&gpio1 4 (GPIO_ACTIVE_HIGH)>  // Col 1 -> D8  (P1.04)
+            , <&gpio1 6 (GPIO_ACTIVE_HIGH)>  // Col 2 -> D9  (P1.06)
+            , <&gpio0 9 (GPIO_ACTIVE_HIGH)>  // Col 3 -> D10 (P0.09)
+            , <&gpio0 10 (GPIO_ACTIVE_HIGH)>  // Col 4 -> D16 (P0.10)
+            , <&gpio1 11 (GPIO_ACTIVE_HIGH)>  // Col 5 -> D14 (P1.11)
             ;
     };
 
