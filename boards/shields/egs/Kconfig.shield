@@ -1,0 +1,5 @@
+config SHIELD_EGS_LEFT
+    def_bool $(shields_list_contains,egs_left)
+
+config SHIELD_EGS_RIGHT
+    def_bool $(shields_list_contains,egs_right)

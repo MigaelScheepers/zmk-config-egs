@@ -1,0 +1,16 @@
+if SHIELD_EGS_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "egs"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif # SHIELD_EGS_LEFT
+
+if SHIELD_EGS_LEFT || SHIELD_EGS_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif # SHIELD_EGS_LEFT || SHIELD_EGS_RIGHT
