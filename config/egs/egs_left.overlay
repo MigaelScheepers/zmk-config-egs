@@ -16,7 +16,7 @@
         wakeup-source;
 
         /*
-         * Diode cathodes face AWAY from switches and route into ROW nets.
+         * Diode cathodes face AWAY from switches and route into ROW nets
          * Current flows: COL (driven HIGH) -> switch -> diode (anode) -> ROW (sensed HIGH).
          * This is col2row with ACTIVE_HIGH cols and PULL_DOWN rows.
          */
