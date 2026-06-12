@@ -1,0 +1,35 @@
+/*
+ * Copyright (c) 2026 The EGS_W1 Project
+ * SPDX-License-Identifier: MIT
+ */
+
+
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+	kscan0: kscan {
+		compatible = "zmk,kscan-gpio-matrix";
+		label = "KSCAN";
+
+		diode-direction = "col2row";		
+	};
+
+	left_encoder: encoder_left {
+		compatible = "alps,ec11";
+		label = "LEFT_ENCODER";
+		resolution = <4>;
+		status = "disabled";
+	};
+
+	right_encoder: encoder_right {
+		compatible = "alps,ec11";
+		label = "RIGHT_ENCODER";
+		resolution = <4>;
+		status = "disabled";
+	};
+
+	sensors {
+		compatible = "zmk,keymap-sensors";
+		sensors = <&left_encoder &right_encoder>;
+	};
+};

@@ -1,10 +1,12 @@
-# Copyright (c) 2026 The EGS_W1 Project Contributor
+# Copyright (c) 2026 The EGS_W1 Project
 # SPDX-License-Identifier: MIT
 
 file_format: "1"
 id: egs
 name: EGS_W1
 type: shield
+url: https://github.com/MigaelScheepers/EGS_W1
+requires: [pro_micro]
 features:
   - keys
   - encoder

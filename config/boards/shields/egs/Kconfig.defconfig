@@ -1,0 +1,25 @@
+# Copyright (c) 2026 The EGS_W1 Project
+# SPDX-License-Identifier: MIT
+
+if SHIELD_EGS_LEFT || SHIELD_EGS_RIGHT
+
+    config SHIELD
+        string
+        default "egs"
+
+    config ZMK_KEYBOARD_NAME
+        string
+        default "EGS_W1"
+
+    config ZMK_SPLIT
+        bool
+        default y
+
+if SHIELD_EGS_LEFT
+
+    config ZMK_SPLIT_ROLE_CENTRAL
+        default y
+
+endif # SHIELD_EGS_LEFT
+
+endif # SHIELD_EGS_LEFT || SHIELD_EGS_RIGHT

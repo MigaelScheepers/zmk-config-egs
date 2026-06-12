@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2026 The EGS_W1 Project
+ * SPDX-License-Identifier: MIT
+ *
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/ext_power.h>
+
+#define BASE   0
+#define MODE1  1
+#define MODE2  2
+#define MODE3  3
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        base_layer {
+            label = "Base";
+            bindings = <
+/* Row0 */ &kp ESC    &kp N1    &kp N2    &kp N3    &kp N4    &kp N5            &kp N6     &kp N7    &kp N8     &kp N9    &kp N0    &kp MINUS
+/* Row1 */ &kp TAB    &kp Q     &kp W     &kp E     &kp R     &kp T             &kp Y      &kp U     &kp I      &kp O     &kp P     &kp BSPC
+/* Row2 */ &kp LSHFT  &kp A     &kp S     &kp D     &kp F     &kp G             &kp H      &kp J     &kp K      &kp L     &kp SEMI  &kp SQT
+/* Row3 */ &kp LCTRL  &kp Z     &kp X     &kp C     &kp V     &kp B             &kp N      &kp M     &kp COMMA  &kp DOT   &kp FSLH  &kp RCTRL
+/* Row4 */ &kp LALT   &kp LGUI  &mo MODE1 &kp SPACE &kp DEL   &kp C_MUTE        &kp C_PP   &kp RET   &kp SPACE  &mo MODE2 &mo MODE3 &kp RALT
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
+        };
+
+        mode1_layer {
+            display-name = "Mode 1";
+            bindings = <
+/* Row0 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row1 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row2 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row3 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row4 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
+        };
+
+        mode2_layer {
+            display-name = "Mode 2";
+            bindings = <
+/* Row0 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row1 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row2 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row3 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row4 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
+        };
+
+        mode3_layer {
+            display-name = "Mode 3";
+            bindings = <
+/* Row0 */ &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row1 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row2 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row3 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+/* Row4 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
+        };
+    };
+};
