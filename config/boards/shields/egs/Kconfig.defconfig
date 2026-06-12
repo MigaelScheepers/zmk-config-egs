@@ -15,6 +15,14 @@ if SHIELD_EGS_LEFT || SHIELD_EGS_RIGHT
         bool
         default y
 
+    config ZMK_USB
+        bool
+        default y
+
+    config CONFIG_ZMK_HID_INDICATORS
+        bool
+        dafault y
+
 if SHIELD_EGS_LEFT
 
     config ZMK_SPLIT_ROLE_CENTRAL
