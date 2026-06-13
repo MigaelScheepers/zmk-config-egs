@@ -14,9 +14,6 @@ if SHIELD_EGS_LEFT || SHIELD_EGS_RIGHT
     config ZMK_SPLIT
         bool
         default y
-    
-    config ZMK_BLE
-    def_bool n
 
 if SHIELD_EGS_LEFT
 

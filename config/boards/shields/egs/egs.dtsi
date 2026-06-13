@@ -11,6 +11,20 @@
 };
 
 / {
+
+    &kscan0: kscan{
+    compatible = "zmk,kscan-gpio-matrix";
+    wakeup-source;
+    diode-direction = "col2row";
+    row-gpios
+        = <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        ;
+    };
+
     chosen {
         zmk,kscan = &kscan0;
         zmk,physical-layout = &egs_physical_layout;
@@ -51,17 +65,6 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,4) RC(4,7) RC(3,6) RC(3,7) 
 
 };
 
-    &kscan0: kscan{
-    compatible = "zmk,kscan-gpio-matrix";
-    wakeup-source;
-    diode-direction = "col2row";
-    row-gpios
-        = <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-        ;
-    };
+
 
 
