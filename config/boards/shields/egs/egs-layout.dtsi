@@ -6,7 +6,7 @@
 #include <physical_layouts.dtsi>
 
 / {
-    physical_layout0: physical_layout_0 {
+    egs_physical_layout: egs_physical_layout {
         compatible = "zmk,physical-layout";
         display-name = "Default";
 
