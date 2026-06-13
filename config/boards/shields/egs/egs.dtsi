@@ -4,10 +4,16 @@
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <egs-layout.dtsi>
+
+&egs_physical_layout {
+    transform = <&default_transform>;
+};
 
 / {
     chosen {
-        zmk,matrix_transform = &default_transform;
+        zmk,kscan = &kscan0;
+        zmk,physical-layout = &egs_physical_layout;
     };
 
     default_transform: keymap_transform_0 {
@@ -42,9 +48,8 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,4) RC(4,7) RC(3,6) RC(3,7) 
         sensors = <&left_encoder &right_encoder>;
         triggers-per-rotation = <20>;
     };
-};
 
-    &kscan0: kscan {
+        &kscan0: kscan {
     compatible = "zmk,kscan-gpio-matrix";
     wakeup-source;
     diode-direction = "col2row";
@@ -56,3 +61,6 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,4) RC(4,7) RC(3,6) RC(3,7) 
         , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
         ;
     };
+};
+
+
