@@ -22,11 +22,11 @@
         base_layer {
             display-name = "Base";
             bindings = <
-/* Row0 */ &kp ESC    &kp N1    &kp N2    &kp N3    &kp N4    &kp N5            &kp N6     &kp N7    &kp N8     &kp N9    &kp N0    &kp MINUS
-/* Row1 */ &kp TAB    &kp Q     &kp W     &kp E     &kp R     &kp T             &kp Y      &kp U     &kp I      &kp O     &kp P     &kp BSPC
-/* Row2 */ &kp LSHFT  &kp A     &kp S     &kp D     &kp F     &kp G             &kp H      &kp J     &kp K      &kp L     &kp SEMI  &kp SQT
-/* Row3 */ &kp LCTRL  &kp Z     &kp X     &kp C     &kp V     &kp B             &kp N      &kp M     &kp COMMA  &kp DOT   &kp FSLH  &kp RCTRL
-/* Row4 */ &kp LALT   &kp LGUI  &mo MODE1 &kp SPACE &kp DEL   &kp C_MUTE        &kp C_PP   &kp RET   &kp SPACE  &mo MODE2 &mo MODE3 &kp RALT
+&kp ESC    &kp N1    &kp N2    &kp N3    &kp N4    &kp N5            &kp N6     &kp N7    &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp TAB    &kp Q     &kp W     &kp E     &kp R     &kp T             &kp Y      &kp U     &kp I      &kp O     &kp P     &kp BSPC
+&kp LSHFT  &kp A     &kp S     &kp D     &kp F     &kp G             &kp H      &kp J     &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LCTRL  &kp Z     &kp X     &kp C     &kp V     &kp B             &kp N      &kp M     &kp COMMA  &kp DOT   &kp FSLH  &kp RCTRL
+&kp LALT   &kp LGUI  &mo MODE1 &kp SPACE &kp DEL   &kp C_MUTE        &kp C_PP   &kp ENTER   &kp SPACE  &mo MODE2 &mo MODE3 &kp RALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
@@ -34,11 +34,11 @@
         mode1_layer {
             display-name = "Mode 1";
             bindings = <
-/* Row0 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row1 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row2 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row3 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row4 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans      &trans      &trans      &trans              &trans      &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans      &kp UP      &trans      &kp LBKT            &kp RBKT    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp LEFT    &kp DOWN    &kp RIGHT   &kp LPAR            &kp RPAR    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans      &trans      &trans      &trans              &trans      &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans      &trans      &trans      &trans              &trans      &trans  &trans  &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
@@ -46,11 +46,11 @@
         mode2_layer {
             display-name = "Mode 2";
             bindings = <
-/* Row0 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row1 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row2 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row3 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row4 */ &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans       &trans  &kp N7  &kp N8  &kp N9  &kp N0     &trans
+&trans  &trans  &trans  &trans  &trans  &trans       &trans  &kp N4  &kp N5  &kp N6  &kp PLUS   &kp STAR
+&trans  &trans  &trans  &trans  &trans  &trans       &trans  &kp N1  &kp N2  &kp N3  &kp MINUS     &kp FSLH
+&trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans     &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
@@ -58,11 +58,11 @@
         mode3_layer {
             display-name = "Mode 3";
             bindings = <
-/* Row0 */ &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row1 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row2 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row3 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-/* Row4 */ &trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
