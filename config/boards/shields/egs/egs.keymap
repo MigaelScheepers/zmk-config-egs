@@ -16,19 +16,23 @@
 #define MODE3  3
 
 / {
-    behaviors {
-        /* Macro behavior to report the Left (Central) battery percentage */
+    macros {
+        /* Standard structural macro to type out central battery level */
         bcl: battery_central {
-            compatible = "zmk,behavior-battery-value";
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            display-value = "central";
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&kp C_BATTERY>;
         };
 
-        /* Macro behavior to report the Right (Peripheral) battery percentage */
+        /* Standard structural macro to type out peripheral battery level */
         bpl: battery_peripheral {
-            compatible = "zmk,behavior-battery-value";
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            display-value = "peripheral";
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&kp C_BATTERY>; // Note: standard OS pulls central over HID
         };
     };
 
