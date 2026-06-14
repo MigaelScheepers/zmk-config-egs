@@ -16,6 +16,22 @@
 #define MODE3  3
 
 / {
+    behaviors {
+        /* Macro behavior to report the Left (Central) battery percentage */
+        bcl: battery_central {
+            compatible = "zmk,behavior-battery-value";
+            #binding-cells = <0>;
+            display-value = "central";
+        };
+
+        /* Macro behavior to report the Right (Peripheral) battery percentage */
+        bpl: battery_peripheral {
+            compatible = "zmk,behavior-battery-value";
+            #binding-cells = <0>;
+            display-value = "peripheral";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -26,7 +42,7 @@
 &kp TAB    &kp Q     &kp W     &kp E     &kp R     &kp T             &kp Y      &kp U     &kp I      &kp O     &kp P     &kp BSPC
 &kp LSHFT  &kp A     &kp S     &kp D     &kp F     &kp G             &kp H      &kp J     &kp K      &kp L     &kp SEMI  &kp SQT
 &kp LCTRL  &kp Z     &kp X     &kp C     &kp V     &kp B             &kp N      &kp M     &kp COMMA  &kp DOT   &kp FSLH  &kp RCTRL
-&kp LGUI   &kp LALT  &mo MODE1 &kp SPACE &kp DEL   &kp C_MUTE        &kp C_PP   &kp ENTER   &kp SPACE  &mo MODE2 &mo MODE3 &kp RALT
+&kp LGUI   &kp LALT  &mo MODE1 &kp SPACE &kp DEL   &kp C_MUTE        &kp C_PP   &kp ENTER &kp SPACE  &mo MODE2 &mo MODE3 &kp RALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
@@ -35,9 +51,9 @@
             display-name = "Mode 1";
             bindings = <
 &kp F11 &kp F1  &kp F2      &kp F3      &kp F4      &kp F5              &kp F6      &kp F7  &kp F8  &kp F9  &kp F10  &kp F12
-&trans  &trans  &trans      &trans      &trans      &kp LBKT            &kp RBKT    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp LEFT    &kp UP      &kp RIGHT   &kp LPAR            &kp RPAR    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans      &kp DOWN    &trans      &trans              &trans      &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans      &trans      &trans      &kp HOME            &kp END    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp LEFT    &kp UP      &kp RIGHT   &kp RBKT            &kp RBKT    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans      &kp DOWN    &trans      &kp LPAR            &kp RPAR      &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans      &trans      &trans      &trans              &trans      &trans  &trans  &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
@@ -58,11 +74,11 @@
         mode3_layer {
             display-name = "Mode 3";
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &trans        &trans        &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bcl     &bpl       &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans   &trans     &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans   &trans     &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans   &trans     &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans   &trans     &trans  &trans  &trans  &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
