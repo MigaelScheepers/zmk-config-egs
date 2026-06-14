@@ -39,7 +39,7 @@
 &trans  &trans  &kp LEFT    &kp UP      &kp RIGHT   &kp LPAR            &kp RPAR    &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans      &kp DOWN    &trans      &trans              &trans      &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans      &trans      &trans      &trans              &trans      &trans  &trans  &trans  &trans  &trans
-            >
+            >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
