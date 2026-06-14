@@ -50,11 +50,11 @@
         mode1_layer {
             display-name = "Mode 1";
             bindings = <
-&kp F11 &kp F1  &kp F2      &kp F3      &kp F4      &kp F5              &kp F6      &kp F7  &kp F8  &kp F9  &kp F10  &kp F12
-&trans  &trans  &trans      &trans      &trans      &kp HOME            &kp END    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp LEFT    &kp UP      &kp RIGHT   &kp RBKT            &kp RBKT    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans      &kp DOWN    &trans      &kp LPAR            &kp RPAR      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans      &trans      &trans      &trans              &trans      &trans  &trans  &trans  &trans  &trans
+&kp F11 &kp F1  &kp F2      &kp F3      &kp F4      &kp F5                    &kp F6      &kp F7  &kp F8  &kp F9  &kp F10  &kp F12
+&trans  &trans  &trans      &trans      &trans      &kp HOME                  &kp END    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp LEFT    &kp UP      &kp RIGHT   &trans                    &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans      &kp DOWN    &kp C_PREV      &kp C_NEXT            &trans      &trans  &trans  &trans  &trans  &trans
+&kp C_VOL_DN  &trans  &trans      &trans      &trans      &trans              &trans      &trans  &trans  &trans  &trans  &kp C_VOL_UP
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
@@ -63,10 +63,10 @@
             display-name = "Mode 2";
             bindings = <
 &kp F11 &kp F1  &kp F2  &kp F3  &kp F4   &kp F5       &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F12
-&trans  &trans  &trans  &trans  &trans  &trans       &trans  &kp N7  &kp N8  &kp N9  &kp N0  &trans
-&trans  &trans  &trans  &trans  &trans  &trans       &trans  &kp N4  &kp N5  &kp N6  &kp PLUS   &kp STAR
-&trans  &trans  &trans  &trans  &trans  &trans       &trans  &kp N1  &kp N2  &kp N3  &kp MINUS     &kp FSLH
-&trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &kp HOME       &kp END  &kp N7  &kp N8  &kp N9  &kp N0  &trans
+&trans  &trans  &trans  &trans  &trans  &kp LBKT       &kp RBKT  &kp N4  &kp N5  &kp N6  &kp PLUS   &kp STAR
+&trans  &trans  &trans  &trans  &trans  &kp LBAR       &kp RBAR  &kp N1  &kp N2  &kp N3  &kp MINUS     &kp FSLH
+&kp C_VOL_DN  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans     &kp C_VOL_UP
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
