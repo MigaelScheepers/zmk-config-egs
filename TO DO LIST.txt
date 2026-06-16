@@ -1,0 +1,2 @@
+Fix encoders
+Add arrows to mode 3 RHS.
