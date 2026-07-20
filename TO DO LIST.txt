@@ -1,2 +1,5 @@
 Fix encoders
-Add arrows to mode 3 RHS.
+Add arrows to mode 3 RHS. - DONE
+Add mouse clicks to mode 3 RHS 
+Add mouse movement to mode 3 LHS
+Add <3 macro
