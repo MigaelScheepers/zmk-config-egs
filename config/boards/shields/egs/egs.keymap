@@ -86,10 +86,10 @@
         mode3_layer {
             display-name = "Mode 3";
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bcl       &bpl           &trans            &trans           &trans          &trans  &trans  &trans
-&trans      &trans        &trans        &trans        &trans    &trans          &msc SCRL_UP      &trans           &trans          &trans  &trans  &trans
-&trans      &trans        &kp LEFT      &kp UP        &kp RIGHT   &trans        &mkp MCLK         &mmv MOVE_LEFT   &mmv MOVE_UP    &mmv MOVE_RIGHT  &trans  &trans
-&trans      &trans        &trans        &kp DOWN      &trans   &trans           &msc SCRL_DOWN    &mkp LCLK        &mmv MOVE_DOWN  &mkp RCLK  &trans  &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bcl       &bpl           &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans    &trans          &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &kp LEFT      &kp UP        &kp RIGHT   &trans        &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &kp DOWN      &trans   &trans           &trans  &trans  &trans  &trans  &kp PIPE  &trans
 &trans      &trans        &trans        &trans        &trans   &trans           &trans  &trans  &trans  &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
